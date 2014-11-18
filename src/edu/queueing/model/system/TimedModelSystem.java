@@ -35,7 +35,4 @@ public class TimedModelSystem extends ModelSystem {
         }
     }
 
-    @Override
-    public void tickLogic() {}
-
 }

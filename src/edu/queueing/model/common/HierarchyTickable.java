@@ -25,6 +25,6 @@ public abstract class HierarchyTickable implements Tickable {
         tickLogic();
     }
 
-    public abstract void tickLogic();
+    public void tickLogic() {};
 
 }

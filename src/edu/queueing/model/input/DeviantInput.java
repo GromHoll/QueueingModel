@@ -31,7 +31,6 @@ public class DeviantInput extends Input {
         if (currentTick > nextInputTick) {
             notifyListeners();
             generateNextInputTick();
-            System.out.println("Input generated");  // TODO remove log
         }
     }
 

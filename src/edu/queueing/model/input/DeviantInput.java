@@ -28,14 +28,15 @@ public class DeviantInput extends Input {
     @Override
     public void tickLogic() {
         currentTick++;
-        if (currentTick == nextInputTick) {
+        if (currentTick > nextInputTick) {
             notifyListeners();
-            nextInputTick = generateNextInputTick();
+            generateNextInputTick();
             System.out.println("Input generated");  // TODO remove log
         }
     }
 
-    private int generateNextInputTick() {
-        return medianTick + random.nextInt(2*deviant) - deviant;
+    private void generateNextInputTick() {
+        currentTick = 0;
+        nextInputTick = medianTick + random.nextInt(2*deviant) - deviant;
     }
 }

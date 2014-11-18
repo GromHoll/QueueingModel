@@ -1,7 +1,5 @@
 package edu.queueing.model.queue;
 
-import edu.queueing.model.input.InputListener;
-
 /**
  * @author GromHoll
  */
@@ -10,13 +8,17 @@ public class InfinityQueue extends Queue {
     private int queueSize = 0;
 
     @Override
-    public void next() {
-        if (queueSize != 0) queueSize--;
+    public boolean next() {
+        if (queueSize > 0) {
+            queueSize--;
+            return true;
+        }
+        return false;
     }
 
     @Override
     public void input() {
         queueSize++;
-        System.out.println("Somebody added to queue");  // TODO delete log
+        System.out.println("Somebody added to queue. Current size = " + queueSize);  // TODO delete log
     }
 }

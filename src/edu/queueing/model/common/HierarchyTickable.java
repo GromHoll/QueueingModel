@@ -15,7 +15,7 @@ public abstract class HierarchyTickable implements Tickable {
         this.children.add(child);
     }
 
-    public void addChildren(Collection<Tickable> children) {
+    public void addChildren(Collection<? extends Tickable> children) {
         this.children.addAll(children);
     }
 

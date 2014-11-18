@@ -8,6 +8,6 @@ import edu.queueing.model.input.InputListener;
  */
 public abstract class Queue extends HierarchyTickable implements InputListener {
 
-    public abstract void next();
+    public abstract boolean next();
 
 }

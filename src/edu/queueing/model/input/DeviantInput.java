@@ -1,5 +1,7 @@
 package edu.queueing.model.input;
 
+import edu.queueing.model.common.TickEvent;
+
 import java.util.Random;
 
 import static edu.queueing.model.utils.CheckUtils.checkArgument;
@@ -16,7 +18,6 @@ public class DeviantInput extends Input {
     private int currentTick = 0;
     private int nextInputTick = 0;
 
-
     public DeviantInput(int medianTick, int deviant) {
         checkArgument(medianTick > 0, "Median Tick should be positive");
         checkArgument(medianTick > Math.abs(deviant), "Deviant should be less than Median Tick");
@@ -26,10 +27,10 @@ public class DeviantInput extends Input {
     }
 
     @Override
-    public void tickLogic() {
+    public void tickLogic(TickEvent event) {
         currentTick++;
         if (currentTick > nextInputTick) {
-            notifyListeners();
+            notifyListeners(event);
             generateNextInputTick();
         }
     }

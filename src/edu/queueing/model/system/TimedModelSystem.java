@@ -1,5 +1,6 @@
 package edu.queueing.model.system;
 
+import edu.queueing.model.common.TickEvent;
 import edu.queueing.model.common.Tickable;
 
 import java.util.Collection;
@@ -30,8 +31,7 @@ public class TimedModelSystem extends ModelSystem {
     @Override
     public void autoTick() {
         for (int t = 0; t < modelingPeriod; t++) {
-            System.out.println("==== " + t + " tick ===="); // TODO delete log
-            tick();
+            tick(new TickEvent(t));
         }
     }
 

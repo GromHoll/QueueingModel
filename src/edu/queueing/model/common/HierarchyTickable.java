@@ -20,11 +20,11 @@ public abstract class HierarchyTickable implements Tickable {
     }
 
     @Override
-    public void tick() {
-        children.stream().forEach(Tickable::tick);
-        tickLogic();
+    public void tick(TickEvent event) {
+        children.stream().forEach(child -> child.tick(event));
+        tickLogic(event);
     }
 
-    public void tickLogic() {};
+    public void tickLogic(TickEvent event) {}
 
 }

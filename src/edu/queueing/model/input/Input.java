@@ -1,6 +1,7 @@
 package edu.queueing.model.input;
 
 import edu.queueing.model.common.HierarchyTickable;
+import edu.queueing.model.common.TickEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +13,8 @@ public abstract class Input extends HierarchyTickable {
 
     private List<InputListener> inputListeners = new ArrayList<>();
 
-    public void notifyListeners() {
-        inputListeners.stream().forEach(InputListener::input);
+    public void notifyListeners(TickEvent event) {
+        inputListeners.stream().forEach(listener -> listener.input(event));
     }
 
     public void addListener(InputListener listener) {

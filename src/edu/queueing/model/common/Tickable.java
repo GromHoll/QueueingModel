@@ -4,5 +4,5 @@ package edu.queueing.model.common;
  * @author GromHoll
  */
 public interface Tickable {
-    public void tick();
+    public void tick(TickEvent event);
 }

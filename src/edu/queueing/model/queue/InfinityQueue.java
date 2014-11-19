@@ -1,24 +1,28 @@
 package edu.queueing.model.queue;
 
+import edu.queueing.model.customer.Customer;
+
+import java.util.ArrayDeque;
+
 /**
  * @author GromHoll
  */
 public class InfinityQueue extends Queue {
 
-    private int queueSize = 0;
+    private java.util.Queue<Customer> queue = new ArrayDeque<>();
 
     @Override
-    public boolean next() {
-        if (queueSize > 0) {
-            queueSize--;
-            return true;
-        }
-        return false;
+    public Customer getCustomer() {
+        return queue.poll();
     }
 
     @Override
-    public void input() {
-        queueSize++;
-        System.out.println("Somebody added to queue. Current size = " + queueSize);  // TODO delete log
+    public int getSize() {
+        return queue.size();
+    }
+
+    @Override
+    protected void addToQueue(Customer customer) {
+        queue.add(customer);
     }
 }

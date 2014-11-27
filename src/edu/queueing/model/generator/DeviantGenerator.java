@@ -1,5 +1,8 @@
 package edu.queueing.model.generator;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+
 import java.util.Random;
 
 /**
@@ -7,10 +10,10 @@ import java.util.Random;
  */
 public class DeviantGenerator implements Generator {
 
-    private final int medianTick;
-    private final int deviant;
+    private @Getter final int medianTick;
+    private @Getter final int deviant;
 
-    private Random random = new Random();
+    private @Getter(AccessLevel.PROTECTED) Random random = new Random();
 
     public DeviantGenerator(int medianTick, int deviant) {
         this.medianTick = medianTick;
@@ -19,7 +22,11 @@ public class DeviantGenerator implements Generator {
 
     @Override
     public int generate() {
-        return medianTick + random.nextInt(2*deviant) - deviant;
+        return getMedianTick() + getNextDeviant();
+    }
+
+    protected int getNextDeviant() {
+        return getRandom().nextInt(2 * getDeviant()) - getDeviant();
     }
 
 }

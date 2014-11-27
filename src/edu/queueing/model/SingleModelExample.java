@@ -40,6 +40,8 @@ public class SingleModelExample {
         storage.getCustomers().stream().forEach(System.out::println);
 
 
+
+
     }
 
 }

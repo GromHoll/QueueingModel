@@ -54,9 +54,14 @@ public class SingleModelExample {
                 .mapToInt(mes -> mes.get(2).getTick() - mes.get(1).getTick())
                 .average().orElse(-1);
 
+        double timeInSystem = customers.stream().map(Customer::getMessages)
+                .mapToInt(mes -> mes.get(2).getTick() - mes.get(0).getTick())
+                .average().orElse(-1);
+
         System.out.println("=======");
         System.out.println("Average time in queue = " + timeInQueue);
         System.out.println("Average time in service = " + timeInService);
+        System.out.println("Average time in system = " + timeInSystem);
     }
 
 }

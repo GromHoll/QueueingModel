@@ -2,29 +2,27 @@ package edu.queueing.model.service;
 
 import edu.queueing.model.common.TickEvent;
 import edu.queueing.model.customer.Customer;
+import edu.queueing.model.generator.Generator;
 
 import java.util.Random;
 
-import static edu.queueing.model.utils.CheckUtils.checkArgument;
+import static edu.queueing.model.utils.CheckUtils.notNull;
 
 /**
  * @author GromHoll
  */
-public class DeviantService extends Service {
+public class GeneratedService extends Service {
 
-    private final int medianTick;
-    private final int deviant;
+    private Generator generator;
 
     private Random random = new Random();
     private int currentTick = 0;
     private int nextServiceTick = 0;
     private Customer currentCustomer = null;
 
-    public DeviantService(int medianTick, int deviant) {
-        checkArgument(medianTick > 0, "Median Tick should be positive");
-        checkArgument(medianTick > Math.abs(deviant), "Deviant should be less than Median Tick");
-        this.medianTick = medianTick;
-        this.deviant = deviant;
+    public GeneratedService(Generator generator) {
+        notNull(generator, "Generator can't be null");
+        this.generator = generator;
     }
 
     @Override
@@ -57,7 +55,7 @@ public class DeviantService extends Service {
 
     private void generateServiceTick() {
         currentTick = 0;
-        nextServiceTick = medianTick + random.nextInt(2*deviant) - deviant;
+        nextServiceTick = generator.generate();
     }
 
 }

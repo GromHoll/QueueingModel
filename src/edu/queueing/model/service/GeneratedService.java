@@ -4,8 +4,6 @@ import edu.queueing.model.common.TickEvent;
 import edu.queueing.model.customer.Customer;
 import edu.queueing.model.generator.Generator;
 
-import java.util.Random;
-
 import static edu.queueing.model.utils.CheckUtils.notNull;
 
 /**
@@ -15,7 +13,6 @@ public class GeneratedService extends Service {
 
     private Generator generator;
 
-    private Random random = new Random();
     private int currentTick = 0;
     private int nextServiceTick = 0;
     private Customer currentCustomer = null;

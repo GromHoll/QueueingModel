@@ -1,6 +1,7 @@
 package edu.queueing.model.customer;
 
 import edu.queueing.model.common.TickEvent;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,19 +12,19 @@ import java.util.stream.Collectors;
  */
 public class Customer {
 
-    private long id;
-    private List<Message> log = new ArrayList<>();
+    private @Getter long id;
+    private @Getter List<Message> messages = new ArrayList<>();
 
     Customer(long id) {
         this.id = id;
     }
 
     public void addMessage(String message, TickEvent event) {
-        log.add(new Message(message,event));
+        messages.add(new Message(message, event));
     }
 
     @Override
     public String toString() {
-        return "Customer #" + id + ":\n" + log.stream().map(Message::toString).collect(Collectors.joining("\n"));
+        return "Customer #" + id + ":\n" + messages.stream().map(Message::toString).collect(Collectors.joining("\n"));
     }
 }

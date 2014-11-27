@@ -3,14 +3,14 @@ package edu.queueing.model.generator;
 /**
  * @author GromHoll
  */
-public class GuassInput extends DeviantGenerator {
+public class GaussianGenerator extends DeviantGenerator {
 
-    public GuassInput(int medianTick, int deviant) {
+    public GaussianGenerator(int medianTick, int deviant) {
         super(medianTick, deviant);
     }
 
     @Override
-    public int generate() {
+    public int getNextDeviant() {
         return (int) getRandom().nextGaussian()*getDeviant();
     }
 }

@@ -15,6 +15,10 @@ public class Message {
         this.event = event;
     }
 
+    public int getTick() {
+        return event.getTick();
+    }
+
     @Override
     public String toString() {
         return String.format("[%d] %s", event.getTick(), message);

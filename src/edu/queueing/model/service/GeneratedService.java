@@ -44,7 +44,7 @@ public class GeneratedService extends Service {
     private void serviceExist(TickEvent event) {
         currentTick++;
         if (currentTick > nextServiceTick) {
-            currentCustomer.addMessage("Customer service started", event);
+            currentCustomer.addMessage("Customer service finished", event);
             releaseCustomer(currentCustomer);
             currentCustomer = null;
         }
